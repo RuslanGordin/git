@@ -275,10 +275,10 @@ static struct one_watch *create_watch(struct fsmonitor_daemon_state *state,
 		FILE_SHARE_WRITE | FILE_SHARE_READ | FILE_SHARE_DELETE;
 	HANDLE hDir;
 	DWORD len_longname;
-	wchar_t wpath[MAX_PATH + 1];
-	wchar_t wpath_longname[MAX_PATH + 1];
+	wchar_t wpath[MAX_LONG_PATH + 1];
+	wchar_t wpath_longname[MAX_LONG_PATH + 1];
 
-	if (xutftowcs_path(wpath, path) < 0) {
+	if (xutftowcs_long_path(wpath, path) < 0) {
 		error(_("could not convert to wide characters: '%s'"), path);
 		return NULL;
 	}
